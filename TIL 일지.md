@@ -2,8 +2,8 @@
 
 # **2023.03**
 
-<style>
-table, tr, th, td{
+<style type='text/css'>
+table, td{
     border: 1px solid white;
     border-collapse: collapse;
 }
