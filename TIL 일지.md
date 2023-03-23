@@ -2,7 +2,8 @@
 
 # **2023.03**
 
-<style type='text/css'>
+(setq markdown-xhtml-header-content
+      "<style type='text/css'>
 table, td{
     border: 1px solid white;
     border-collapse: collapse;
@@ -16,7 +17,8 @@ th{
     text-align: center; 
     font-weight: bold;
 }
-</style>
+</style>")
+
 
 <table style="width:100%">
     <tr>
