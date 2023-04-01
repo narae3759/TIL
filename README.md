@@ -15,9 +15,9 @@
 * Pandas
     * [01 데이터 타입](Python/Pandas/01_Data_Type.md)
 * Matplotlib  
-    * [01 한글 폰트 적용](Python/Pandas/01_Plot_Font.md)
-    * [02 꾸미기 함수 모음](Python/Pandas/02_Functions.md)
-    * [03 Plot 관련 Tip](Python/Pandas/03_Tips.md)
+    * [01 한글 폰트 적용](Python/Matplotlib/01_Plot_Font.md)
+    * [02 꾸미기 함수 모음](Python/Matplotlib/02_Functions.md)
+    * [03 Plot 관련 Tip](Python/Matplotlib/03_Tips.md)
     (`subplots`)
 
     <!-- * Seaborn -->
