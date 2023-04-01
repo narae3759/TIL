@@ -1,0 +1,107 @@
+> **Reference**<br>
+> * [Plotly API reference](https://plotly.com/python-api-reference/index.html)
+> * [Plotly Wikidocs](https://wikidocs.net/185049)
+---
+
+# **1. Plot 기본 코드**
+
+## **1)`graph_objects`**
+
+```python
+import plotly.graph_objects as go
+
+trace = go.Bar()
+trace = go.Scatter()
+...
+
+fig = go.Figure(
+    data=[trace],
+    layout=go.Layout(
+        ...
+    )
+)
+```
+
+## **2)`express`**
+
+```python
+import plotly.express as px
+
+fig = px.bar()
+fig = px.scatter()
+...
+```
+## **plot updates**
+
+```python
+# 겹쳐 그리기1
+fig.add_trace(trace)
+
+# 겹쳐 그리기2
+fig.add_scatter()
+fig.add_bar()
+...
+
+# 추가로 꾸미기
+fig.update_layout(...)
+fig.update_xaxes()
+fig.update_yaxes()
+```
+
+# **2. Subplots**
+
+```python 
+from plotly.subplots import make_subplots
+
+# 공간 만들기 
+fig = make_subplots(rows, cols, 
+                    subplot_titles = (),
+                    column_widths=[], 
+                    row_heights=[],
+                    shared_xaxes=True/False,
+                    shared_yaxes=True/False,
+                    specs = [])
+
+fig.add_trace(trace, row, col)
+...
+```
+
+|option|설명|
+|------|----|
+|`subplot_titles`|각 plot의 title을 적용. (tuple 형태)|
+|`column_widths`<br> `row_heights`|plot의 열/행 크기 비율 (list 형태)|
+|`shared_xaxes`<br> `shared_yaxes`|plot의 x, y축 공유 여부 (bool 형태)|
+|`specs`|행 또는 열 병합이 필요할 때 사용한다.|
+
+<div markdown="1" style="text-align:center; margin-bottom:50px">
+<img src="./images/layout03.png" width="50%">
+</div>  
+
+# **2. Layout**
+<div style="display:flex; justify-content:center; align-items:center; margin-bottom:20px">
+    <img src="./images/layout01.png" width="50%">
+    <img src="./images/layout02.png" width="40%" style="margin-left:20px">
+</div>
+
+<table>
+    <tr>
+        <th>구분</th>
+        <th>code</th>
+    </tr>
+    <tr>
+        <td>plot 크기</td>
+        <td>width / height</td>
+    </tr>
+    <tr>
+        <td>plot margin</td>
+        <td>margin_l / margin_r / margin_t / margin_b</td>
+    </tr>
+    <tr>
+        <td>plot title</td>
+        <td>
+            title_text<br>
+            title_x / title_y / title_xanchor / title_yanchor<br>
+            title_font_size / title_font_color / title_font_family
+        </td>
+    </tr>
+</table>
