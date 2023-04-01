@@ -8,13 +8,17 @@
 
 ## **Data Analysis**
 * Time Series Analysis 
-    * <a href="Data Analysis/Time Series Analysis/01_Time_Series_Data_with_Pandas.md">01. Pandas를 이용한 시계열 자료 다루기</a>
+    * [01. Pandas를 이용한 시계열 자료 다루기](Data_Analysis/Time_Series_Analysis/01_Time_Series_Data_with_Pandas.md)
+    * [주식 데이터로 실습하기](Data_Analysis/Time_Series_Analysis/Exercise.ipynb)
 
 ## **Python**
 * Pandas
-    * [01_데이터 타입](Python/Pandas/01_Data_Type.md)
-* Plot 
-    * [01_Matplotlib 기본 설정](Python/Pandas/01_Matplotlib1.md)
+    * [01 데이터 타입](Python/Pandas/01_Data_Type.md)
+* Matplotlib  
+    * [01 한글 폰트 적용](Python/Pandas/01_Plot_Font.md)
+    * [02 꾸미기 함수 모음](Python/Pandas/01_Functions.md)
+    * [03 Plot 관련 Tip](Python/Pandas/01_Tips.md)
+    (`subplots`)
 
     <!-- * Seaborn -->
     <!-- * Plotly -->

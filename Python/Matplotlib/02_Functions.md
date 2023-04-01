@@ -1,47 +1,9 @@
-<!-- > **Reference**<br>
-> *  -->
+# **Functions**
 
-# **1. 한글 폰트 적용 방법**
-## **1) Local**
-1. 한글 폰트 설치(ex. [Google Fonts](https://fonts.google.com/))
-2. 한글 폰트 등록,다음의 디렉토리를 들어가서 fonts 폴더를 찾고 그 안에 한글 ttf파일을 넣는다.
-    ```python
-    mpl.matplotlib_fname()
-    ```
-3. 재시작, 다음 폴더 안의 파일들은 모두 삭제한 후, 파이선을 재시작한다. 
-    ```python
-    mpl.get_cachedir()
-    ```
-4. 한글 폰트 설정
-    ```python
-    mpl.rcParams['font.family'] = 'NanumGothic'
-    mpl.rcParams['axes.unicode_minus'] = False
-    ```
-
-## **2) Colab**
 ```python
-# 폰트 설치
-!apt -qq -y install fonts-nanum 
-!sudo fc-cache -fv
-!rm ~/.cache/matplotlib -rf
-```
-```python
-import matplotlib as mpl
 import matplotlib.pyplot as plt
-
-plt.rc('font', family='NanumGothic')            # matplotllib
-mpl.rcParams['axes.unicode_minus'] = False      # minus 처리
+from matplotlib import dates
 ```
-
-# **2. `Matplotlib.pyplot`**
-
-```python 
-import matplotlib.pyplot as plt
-```
-
-
-
-# **3. Functions**
 
 <table style="width:90%">
     <tr>
@@ -81,29 +43,26 @@ import matplotlib.pyplot as plt
     <tr>
         <td style="text-align:center;">
             xaxis.set_major_locator()<br>
-            yaxis.set_major_locator()
-        </td>
-        <td>x, y축의 major tick을 설정할 규칙을 정한다.</td>
-    </tr>
-    <tr>
-        <td style="text-align:center;">
+            yaxis.set_major_locator()<br>
             xaxis.set_minor_locator()<br>
             yaxis.set_minor_locator()
         </td>
-        <td>x, y축의 minor tick을 설정할 규칙을 정한다.</td>
+        <td>
+            x, y축의 major(minor) tick을 설정할 규칙을 정한다.<br>
+            datetime인 경우 dates.DateLocator()이용(
+                <a href=(https://matplotlib.org/stable/api/dates_api.html)>바로가기</a>)
+        </td>
     </tr>
     <tr>
         <td style="text-align:center;">
             xaxis.set_major_formatter()<br>
-            yaxis.set_major_formatter()
-        </td>
-        <td>x, y축의 major tick의 format을 설정한다.</td>
-    </tr>
-    <tr>
-        <td style="text-align:center;">
+            yaxis.set_major_formatter()<br>
             xaxis.set_minor_formatter()<br>
             yaxis.set_minor_formatter()
         </td>
-        <td>x, y축의 minor tick의 format을 설정한다.</td>
+        <td>
+            x, y축의 major(minor) tick의 format을 설정한다.<br>
+            datetime인 경우 dates.DateFormatter()이용(
+                <a href=(https://matplotlib.org/stable/api/dates_api.html)>바로가기</a>)</td>
     </tr>
 </table>
