@@ -11,6 +11,10 @@
     * [01. Pandas를 이용한 시계열 자료 다루기](Data_Analysis/Time_Series_Analysis/01_Time_Series_Data_with_Pandas.md)
     * [주식 데이터로 실습하기](Data_Analysis/Time_Series_Analysis/Exercise.ipynb)
 
+## **Machine Learning/Deep Learning**
+* Deep Learning
+    * [Hidden Markov Chain Model(HMM)](AI/Deep_Learning/HMM.md)
+
 ## **Python**
 * Pandas
     * [01. 데이터 타입](Python/Pandas/01_Data_Type.md)
