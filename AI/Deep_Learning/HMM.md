@@ -58,36 +58,27 @@ $$\text{Goal} : \operatorname{P}(\mathbf{O})=\alpha_4(1) + \alpha_4(2)$$
 * **STEP1. $T=1$**
 
 $$
-        \begin{aligned}
-            \alpha_1(1) &= P(o_1=산책,q_1=비) = \pi_1\cdot b_1(산책) = 0.6\times 0.1=0.06\\
-            \alpha_1(2) &= P(o_1=산책,q_1=해) = \pi_1\cdot b_2(산책) = 0.4\times 0.6=0.24
-        \end{aligned}
-
+\begin{aligned}
+    \alpha_1(1) &= P(o_1=산책,q_1=비) = \pi_1\cdot b_1(산책) = 0.6\times 0.1=0.06\\
+    \alpha_1(2) &= P(o_1=산책,q_1=해) = \pi_1\cdot b_2(산책) = 0.4\times 0.6=0.24
+\end{aligned}
 $$
 
 * **STEP2. $T=2$**
 
 $$
-        \begin{aligned}
-            \alpha_2(1) &= P(o_1=산책,o_2=산책,q_2=비)\\
-            &= (\alpha_1(1)\cdot a_{11}+\alpha_1(2)\cdot a_{21})\cdot b_{1}(산책)\\ 
-            &= (0.06\cdot0.7+0.24\cdot0.4)\times 0.1
-            =(0.042+0.096)\times 0.1=0.0138\\
-            \alpha_2(2) &= P(o_1=산책,o_2=산책,q_2=해)\\
-            &= (\alpha_1(1)\cdot a_{12}+\alpha_1(2)\cdot a_{22})\cdot b_{2}(산책)\\ 
-            &= (0.06\cdot0.3+0.24\cdot0.6)\times 0.6
-            =(0.018+0.144)\times 0.6=0.0972
-        \end{aligned}
-
+    \begin{aligned}
+        \alpha_2(1) &= P(o_1=산책,o_2=산책,q_2=비)\\
+        &= (\alpha_1(1)\cdot a_{11}+\alpha_1(2)\cdot a_{21})\cdot b_{1}(산책)\\ 
+        &= (0.06\cdot0.7+0.24\cdot0.4)\times 0.1
+        =(0.042+0.096)\times 0.1=0.0138\\
+        \alpha_2(2) &= P(o_1=산책,o_2=산책,q_2=해)\\
+        &= (\alpha_1(1)\cdot a_{12}+\alpha_1(2)\cdot a_{22})\cdot b_{2}(산책)\\ 
+        &= (0.06\cdot0.3+0.24\cdot0.6)\times 0.6
+        =(0.018+0.144)\times 0.6=0.0972
+    \end{aligned}
 $$
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']] }
-    });
-</script>
-<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 <details>
 <summary>
