@@ -56,6 +56,7 @@ $\rightarrow$ <u>$N$과 $T$가 클수록 너무 많은 확률을 고려해야 �
 
 $$\text{Goal} : \operatorname{P}(\mathbf{O})=\alpha_4(1) + \alpha_4(2)$$
 * **STEP1. $T=1$**
+
 $$
         \begin{aligned}
             \alpha_1(1) &= P(o_1=산책,q_1=비) = \pi_1\cdot b_1(산책) = 0.6\times 0.1=0.06\\
@@ -65,6 +66,7 @@ $$
 $$
 
 * **STEP2. $T=2$**
+
 $$
         \begin{aligned}
             \alpha_2(1) &= P(o_1=산책,o_2=산책,q_2=비)\\
@@ -79,12 +81,20 @@ $$
 
 $$
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']] }
+    });
+</script>
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
 <details>
 <summary>
 풀이 과정 더 보기
 </summary>
 <div markdown="1">    
-    * **STEP1. $T=3$**
+    <li> <b>STEP1. $T=3$</b></li>     
         $$
             \begin{aligned}
                 \alpha_3(1) &= P(o_1=산책,o_2=산책,o_3=연구,q_2=비)\\
@@ -97,19 +107,19 @@ $$
                 =(0.018+0.144)\times 0.6=0.0972
             \end{aligned}
         $$
-    * **STEP1. $T=3$**
-    $$
-        \begin{aligned}
-            \alpha_3(1) &= P(o_1=산책,o_2=산책,o_3=연구,q_2=비)\\
-            &= (\alpha_2(1)\cdot a_{11}+\alpha_2(2)\cdot a_{21})\cdot b_{1}(연구)\\ 
-            &= (0.06\cdot0.7+0.24\cdot0.4)\times 0.1
-            =(0.042+0.096)\times 0.1=0.0138\\
-            \alpha_3(2) &= P(o_1=산책,o_2=산책,o_3=연구,q_2=해)\\
-            &= (\alpha_2(1)\cdot a_{12}+\alpha_2(2)\cdot a_{22})\cdot b_{2}(연구)\\ 
-            &= (0.06\cdot0.3+0.24\cdot0.6)\times 0.6
-            =(0.018+0.144)\times 0.6=0.0972
-        \end{aligned}
-    $$     
+    <li> <b>STEP1. $T=3$</b> </li>
+        $$
+            \begin{aligned}
+                \alpha_3(1) &= P(o_1=산책,o_2=산책,o_3=연구,q_2=비)\\
+                &= (\alpha_2(1)\cdot a_{11}+\alpha_2(2)\cdot a_{21})\cdot b_{1}(연구)\\ 
+                &= (0.06\cdot0.7+0.24\cdot0.4)\times 0.1
+                =(0.042+0.096)\times 0.1=0.0138\\
+                \alpha_3(2) &= P(o_1=산책,o_2=산책,o_3=연구,q_2=해)\\
+                &= (\alpha_2(1)\cdot a_{12}+\alpha_2(2)\cdot a_{22})\cdot b_{2}(연구)\\ 
+                &= (0.06\cdot0.3+0.24\cdot0.6)\times 0.6
+                =(0.018+0.144)\times 0.6=0.0972
+            \end{aligned}
+        $$     
 </div>
 </details>
 

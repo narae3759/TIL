@@ -29,6 +29,7 @@
 $$
     y_t = \tau_t + c_t
 $$
+
     * $y_t$ : time series
     * $\tau_t$ : trend component 
     * $c_t$ : cyclical component
