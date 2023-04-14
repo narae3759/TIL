@@ -25,6 +25,15 @@
     (`subplots`)
 * Plotly
     * [01. 기초 그래프](Python/Plotly/01_.md)
+* WEB
+    * [00. 관련 코드 정리](Python/Web/00_Tips.md)
+    * [01. 웹 스크래핑(Pandas)](Python/Web/01_Web_scraping.ipynb)
+    * [02. 웹 크롤링(BeautifulSoup)](Python/Web/02_Web_crawling1.ipynb)
+    * [Exercise02-1. 지마켓 상품검색](Python/Web/Ex02_1_Gmarket.ipynb)
+    * [Exercise02-2. 교보문고 도서검색](Python/Web/Ex02_2_Kyobo.ipynb)
+    <!-- * [03. 웹 크롤링(Selenium)](Python/Web/03_Web_crawling2.ipynb) -->
+    <!-- * [Exercise01. 지마켓](Python/Web/Ex01_Gmarket.ipynb) -->
+    <!-- * [Exercise02. 세계 축구 선수 순위](Python/Web/Ex01_World_soccer.ipynb) -->
 
     <!-- * Seaborn -->
     <!-- * Plotly -->
