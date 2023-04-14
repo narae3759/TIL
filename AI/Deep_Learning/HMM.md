@@ -36,7 +36,7 @@ $r=2$이면 second order markov model이라고 한다.
 # **Exercise : 직접 계산해보기**
 * Hidden State : {비, 해} / Observable State : {산책, 쇼핑, 연구}
 * 각 확률은 위의 그림과 같다. 
-* $\mathbf{O}=\{o_1=산책, o_2=산책, o_3=연구, o_4=쇼핑\}$라고 하자.
+* $\mathbf{O}=\lbrace o_1=산책, o_2=산책, o_3=연구, o_4=쇼핑\rbrace$라고 하자.
 
 ## **Likelihood : $\operatorname{P}(\mathbf{O}\mid \boldsymbol{\lambda})$**
 * 각 시점에서 Hidden 상태가 나올 경우가 각각 2가지이기 때문에 우리는 $2^4=16$개의 확률을 고려해서 이를 모두 더해야 한다. <br>
@@ -64,7 +64,7 @@ $$
 
 $$
 
-* **STEP1. $T=2$**
+* **STEP2. $T=2$**
 $$
         \begin{aligned}
             \alpha_2(1) &= P(o_1=산책,o_2=산책,q_2=비)\\

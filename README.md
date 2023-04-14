@@ -19,10 +19,9 @@
 * Pandas
     * [01. 데이터 타입](Python/Pandas/01_Data_Type.md)
 * Matplotlib  
+    * [00. 관련 코드 정리](Python/Matplotlib/00_Tips.md)
     * [01. 한글 폰트 적용](Python/Matplotlib/01_Plot_Font.md)
     * [02. 꾸미기 함수 모음](Python/Matplotlib/02_Functions.md)
-    * [03. Plot 관련 Tip](Python/Matplotlib/03_Tips.md)
-    (`subplots`)
 * Plotly
     * [01. 기초 그래프](Python/Plotly/01_.md)
 * WEB
