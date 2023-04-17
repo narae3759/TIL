@@ -1,7 +1,9 @@
 > **Reference**<br>
 > * [핵심 머신러닝, Hidden Markov Model, 김성범[소장/인공지능연구소] 유튜브](https://youtu.be/HB9Nb0odPRs)
 > * [은닉 마코프 모델, ratsgo 블로그](https://ratsgo.github.io/machine%20learning/2017/03/18/HMMs/)
+> * [Forward and Backward Algorithm in Hidden Markov Model, Blog](http://www.adeveloperdiary.com/data-science/machine-learning/forward-and-backward-algorithm-in-hidden-markov-model/)
 ---
+
 
 # **Markov Chain**
 * Markov Property를 가지는 이산 시간 확률과정
@@ -55,6 +57,7 @@ $\rightarrow$ <u>$N$과 $T$가 클수록 너무 많은 확률을 고려해야 �
 * $\operatorname{P}(\mathbf{O}\mid\boldsymbol{\lambda})=\sum_{j=1}^J\alpha_t(j)$
 
 $$\text{Goal} : \operatorname{P}(\mathbf{O})=\alpha_4(1) + \alpha_4(2)$$
+
 * **STEP1. $T=1$**
 
 $$
@@ -71,46 +74,109 @@ $$
         \alpha_2(1) &= P(o_1=산책,o_2=산책,q_2=비)\\
         &= (\alpha_1(1)\cdot a_{11}+\alpha_1(2)\cdot a_{21})\cdot b_{1}(산책)\\ 
         &= (0.06\cdot0.7+0.24\cdot0.4)\times 0.1
-        =(0.042+0.096)\times 0.1=0.0138\\
+        =0.0138\\
         \alpha_2(2) &= P(o_1=산책,o_2=산책,q_2=해)\\
         &= (\alpha_1(1)\cdot a_{12}+\alpha_1(2)\cdot a_{22})\cdot b_{2}(산책)\\ 
         &= (0.06\cdot0.3+0.24\cdot0.6)\times 0.6
-        =(0.018+0.144)\times 0.6=0.0972
+        =0.0972
     \end{aligned}
+$$
+
+* **STEP3. $T=3, T=4$**
+
+    <div style="text-align:center">    
+        <img src='../images/DL03.png' width="90%">
+    </div>
+
+
+* **STEP4. $\operatorname{P}(\mathbf{O}\mid\boldsymbol{\lambda})$**
+
+$$
+    \operatorname{P}(\mathbf{O}\mid\boldsymbol{\lambda})
+    = \alpha_4(1) + \alpha_4(2) = 0.00779 + 0.00331 = 0.0111
+$$
+
+<details>
+<summary>
+계산 과정 자세히 보기
+</summary>
+<div style="text-align:center">    
+    <img src='../images/DL04.png' width="90%">
+</div>
+</details>
+
+---
+
+### **2) Backward Algorithm**
+<div style="text-align:center">
+    <img src="../images/DL05.png" width="90%">
+</div>
+
+* $\beta_t(j)=\operatorname{P}(o_{t+1},o_{t+2},\cdots,o_T,q_t=s_j\mid \boldsymbol{\lambda})$<br>
+    : $t$시점 이후의 관측값이 ${o_{t+1},o_{t+2},\cdots,o_T}$이고, $t$시점의 상태가 $s_j$일 확률
+* $\operatorname{P}(\mathbf{O}\mid\boldsymbol{\lambda})$
+
+$$\text{Goal} : \operatorname{P}(\mathbf{O})=\beta_1(1)\times \pi_1 \times \beta_1(o_1) + \beta_1(2)\times \pi_2 \times \beta_2(o_1)$$
+
+* **STEP1. $T=3$**, 마지막 시점의 $\beta$값은 1이다.($\beta_4(1)=1, \beta_4(2)=1$)
+
+$$
+    \begin{aligned}
+        \beta_3(1)
+        &= \beta_4(1)\times a_{11} \times b_1(\text{쇼핑}) 
+        + \beta_4(2)\times a_{12} \times b_2(\text{쇼핑})
+        \\
+        \beta_3(2)
+        &= \beta_4(1)\times a_{21} \times b_1(\text{쇼핑}) 
+        + \beta_4(2)\times a_{22} \times b_2(\text{쇼핑})
+    \end{aligned}
+$$
+
+* **STEP2. $T=2$**
+
+$$
+    \begin{aligned}
+        \beta_2(1)
+        &= \beta_3(1)\times a_{11} \times b_1(\text{연구}) 
+        + \beta_3(2)\times a_{12} \times b_2(\text{연구})\\
+        \beta_2(2)
+        &= \beta_3(1)\times a_{21} \times b_1(\text{연구}) 
+        + \beta_3(2)\times a_{22} \times b_2(\text{연구})
+    \end{aligned}
+$$
+
+* **STEP3. $T=1$**
+
+$$
+    \begin{aligned}
+        \beta_1(1)
+        &= \beta_2(1)\times a_{11} \times b_1(\text{산책}) 
+        + \beta_2(2)\times a_{12} \times b_2(\text{산책})\\
+        \beta_1(2)
+        &= \beta_2(1)\times a_{21} \times b_1(\text{산책}) 
+        + \beta_2(2)\times a_{22} \times b_2(\text{산책})
+    \end{aligned}
+$$
+
+* **STEP3. $\operatorname{P}(\mathbf{O}\mid\boldsymbol{\lambda})$**
+
+$$
+    \operatorname{P}(\mathbf{O})
+    = \beta_1(1)\times \pi_1 \times b_1(\text{산책}) 
+    + \beta_1(2)\times \pi_2 \times b_2(\text{산책})
 $$
 
 
 <details>
 <summary>
-풀이 과정 더 보기
+계산 과정 자세히 보기
 </summary>
-<div markdown="1">    
-    <li> <b>STEP1. $T=3$</b></li>     
-        $$
-            \begin{aligned}
-                \alpha_3(1) &= P(o_1=산책,o_2=산책,o_3=연구,q_2=비)\\
-                &= (\alpha_2(1)\cdot a_{11}+\alpha_2(2)\cdot a_{21})\cdot b_{1}(연구)\\ 
-                &= (0.06\cdot0.7+0.24\cdot0.4)\times 0.1
-                =(0.042+0.096)\times 0.1=0.0138\\
-                \alpha_3(2) &= P(o_1=산책,o_2=산책,o_3=연구,q_2=해)\\
-                &= (\alpha_2(1)\cdot a_{12}+\alpha_2(2)\cdot a_{22})\cdot b_{2}(연구)\\ 
-                &= (0.06\cdot0.3+0.24\cdot0.6)\times 0.6
-                =(0.018+0.144)\times 0.6=0.0972
-            \end{aligned}
-        $$
-    <li> <b>STEP1. $T=3$</b> </li>
-        $$
-            \begin{aligned}
-                \alpha_3(1) &= P(o_1=산책,o_2=산책,o_3=연구,q_2=비)\\
-                &= (\alpha_2(1)\cdot a_{11}+\alpha_2(2)\cdot a_{21})\cdot b_{1}(연구)\\ 
-                &= (0.06\cdot0.7+0.24\cdot0.4)\times 0.1
-                =(0.042+0.096)\times 0.1=0.0138\\
-                \alpha_3(2) &= P(o_1=산책,o_2=산책,o_3=연구,q_2=해)\\
-                &= (\alpha_2(1)\cdot a_{12}+\alpha_2(2)\cdot a_{22})\cdot b_{2}(연구)\\ 
-                &= (0.06\cdot0.3+0.24\cdot0.6)\times 0.6
-                =(0.018+0.144)\times 0.6=0.0972
-            \end{aligned}
-        $$     
+<div style="text-align:center">    
+    <img src='../images/DL06.png' width="90%">
 </div>
 </details>
 
+---
+
+## **Decoding : $\operatorname{P} (S\mid \mathbf{O},\boldsymbol{\lambda})$**
+* 각 시점에서의 Hidden State의 상태가 무엇인지 결정하기 위한 것이다. 
