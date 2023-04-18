@@ -9,6 +9,7 @@
 ## **Data Analysis**
 * Time Series Analysis 
     * [01. Pandas를 이용한 시계열 자료 다루기](Data_Analysis/Time_Series_Analysis/01_Time_Series_Data_with_Pandas.md)
+    * [02. Statsmodels를 이용한 시계열 자료 다루기](Data_Analysis/Time_Series_Analysis/01_Time_Series_Data_with_Statsmodels.md)
     * [주식 데이터로 실습하기](Data_Analysis/Time_Series_Analysis/Exercise.ipynb)
 
 ## **Machine Learning/Deep Learning**
@@ -36,3 +37,9 @@
 
     <!-- * Seaborn -->
     <!-- * Plotly -->
+* Coding Test
+    * [프로그래머스 Lv1. 달리기 경주](Python/CodingTest/%5B%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%20Lv1%5D%20%EB%8B%AC%EB%A6%AC%EA%B8%B0%20%EA%B2%BD%EC%A3%BC.md])
+
+## **SQL**
+* [00. 관련 코드 정리](SQL/00_Tips.md)
+* [01. 관련 에러 정리](SQL/00_Errors.md)

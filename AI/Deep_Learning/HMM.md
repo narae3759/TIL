@@ -82,10 +82,9 @@ $$
     \end{aligned}
 $$
 
-* **STEP3. $T=3, T=4$**
-
-    <div style="text-align:center">    
-        <img src='../images/DL03.png' width="90%">
+* **STEP3. $T=3, T=4$**     
+    <div style="text-align:center">        
+    <img src='../images/DL03.PNG' width="90%">
     </div>
 
 
@@ -101,7 +100,7 @@ $$
 계산 과정 자세히 보기
 </summary>
 <div style="text-align:center">    
-    <img src='../images/DL04.png' width="90%">
+    <img src='../images/DL04.PNG' width="90%">
 </div>
 </details>
 
@@ -109,7 +108,7 @@ $$
 
 ### **2) Backward Algorithm**
 <div style="text-align:center">
-    <img src="../images/DL05.png" width="90%">
+    <img src="../images/DL05.PNG" width="90%">
 </div>
 
 * $\beta_t(j)=\operatorname{P}(o_{t+1},o_{t+2},\cdots,o_T,q_t=s_j\mid \boldsymbol{\lambda})$<br>
@@ -172,7 +171,7 @@ $$
 계산 과정 자세히 보기
 </summary>
 <div style="text-align:center">    
-    <img src='../images/DL06.png' width="90%">
+    <img src='../images/DL06.PNG' width="90%">
 </div>
 </details>
 
