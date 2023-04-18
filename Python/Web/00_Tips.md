@@ -82,7 +82,7 @@ soup.prettify()
 > * 태그에 id, class 등 태그를 설명하는 것들이 있는데 이를 <b>속성(attr)</b>이라고 한다.
 
 <div markdown="1" style="text-align:center">
-<img src="./images/beautifulsoup03.png" width="50%">
+<img src="./images/beautifulsoup03.png" width="30%">
 </div>  
 
 * 위의 html의 이름을 soup이라고 하자.
