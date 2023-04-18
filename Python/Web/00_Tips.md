@@ -119,3 +119,4 @@ soup.prettify()
     [마우스 오른쪽 클릭] - [Copy] - [Copy Selector]로 쉽게 얻을 수 있다.
     * 만약 값에 띄어쓰기(space)가 있는 경우에는 '.'으로 대체하여 쓰면 된다.
 
+## **1) Selenium**
