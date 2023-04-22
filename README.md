@@ -17,7 +17,7 @@
 * Deep Learning
     * [Hidden Markov Chain Model(HMM)](AI/Deep_Learning/HMM.md)
 * TensorFlow
-    * [TensorFlow 기초](AI/TensorFlow/01_Tensorflow_basic.md)
+    * [TensorFlow 기초](AI/Tensorflow/01_Tensorflow_basic.md)
 
 ## **Python**
 * Pandas
