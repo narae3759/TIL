@@ -38,6 +38,17 @@ print(const_tensor2)
 ## tf.Tensor([1.2       5.        3.1415927], shape=(3,), dtype=float32)
 ```
 
+### **`tf.range(num)`**
+* 연속된 숫자의 tensor 생성
+
+```python
+range_tensor = tf.range(10)
+print(range_tensor)
+
+## Output
+## tf.Tensor([0 1 2 3 4 5 6 7 8 9], shape=(10,), dtype=int32)
+```
+
 ## **2) 하나의 원소로 채우기**
 * ★★★★★ 생성할 Tensor의 크기가 크다면 `tf.fill`이 더 효율적이다.
 ### **`tf.ones(shape) / tf.zeros(shape) / tf.fill(shape, num)`**
