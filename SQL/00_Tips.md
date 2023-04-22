@@ -1,9 +1,33 @@
 # **기본**
-## **처음 N개의 행만 추출: `LIMIT N`**
-## **서브쿼리는 ()안에 적용한다**
-* 조건들이 적용된 쿼리들을 결합해야 할 때 효율적으로 표현하기 위해 `WITH`를 사용한다.
+* **`AS`를 통해 COLUMN의 이름을 다시 설정할 수 있다**
+* **처음 N개의 행만 추출: `LIMIT N`**
+* **서브쿼리는 ()안에 적용한다**
+    <details>
+    <summary>내가 가장 많이 하는 실수</summary>
+    <div markdown="1">
+    서브쿼리들의 결합으로 만들어진 TABLE을 `FROM` 뒤에 붙일 때 ()안에 서브쿼리들을 다시 써야 한다. 
+
+    ```sql
+    SELECT *
+    FROM 
+    (
+        (
+            서브쿼리1
+        )
+        UNION ALL
+        (
+            서브쿼리2
+        )
+    )
+    ```
+    </div>
+    </details>
 
 # **SELECT**
+## **기본 계산 함수 : `SUM(), MIN(), MAX(), COUNT(), AVG()`**
+* 그룹별 통계를 내고 싶을 때 `GROUP BY 'COLUMN'`과 함께 쓰인다. 
+* 전체 행의 카운트를 셀 때에는 따로 COLUMN 설정 없이 `COUNT(*)`를 사용한다. 
+
 ## **조건에 따른 새로운 COLUMN 생성 : `CASE WHEN THEN ELSE END`**
 * EX1. 'SCORE'가 70점 넘으면 합격 아니면 불합격이라는 'RESULT' COLUMNS을 생성하자.
     ```sql 
@@ -12,6 +36,9 @@
            END
     FROM DATA  
     ```
+
+## **중복되지 않는 COLUMN 추출 : `DISTINCT 'COLUMN'`**
+* EX1. 결제 수단(PAY)의 종류를 추출 $\rightarrow$  `DISTINCT PAY`
 
 # **WHERE**
 ## **문자의 포함 여부 확인 : `LIKE`**
@@ -23,8 +50,16 @@
 * ※ `LIKE`와 `IN`은 동시에 사용할 수 없다. 
 * EX1. 통근수단이 '버스', '지하철', '자전거'인 행만 추출 $\rightarrow$ `IN ('버스', '지하철', '자전거)`
 
+## **사이에 있는 값 찾기 :  `BETWEEN A AND B`**
+* 점수(SCORE)가 70점 <u>이상</u> 80점 <u>이하</u>인 행만 추출 $\rightarrow$ `SCORE BETWEEN 70 AND 80`
 
-
+# **ORDER BY**
+* EX1. USER_ID를 기준 오름차순으로 정렬 $\rightarrow$ `ORDER BY USER_ID` / `ORDER BY USER_ID ASC`
+* EX2. USER_ID를 기준 내림차순으로 정렬 $\rightarrow$ `ORDER BY USER_ID DESC`
+* EX3. NAME을 기준 오름차순으로 정렬 후 같으면 USER_ID를 기준 내림차순으로 정렬 <br>
+$\rightarrow$ `ORDER BY NAME, USER_ID DESC`
+* EX4. NAME을 기준 내립차순으로 정렬 후 같으면 USER_ID를 기준 오름차순으로 정렬<br>
+$\rightarrow$ `ORDER BY NAME DESC, USER_ID`
 
 # **FUNCTIONS**
 ## **`DATE_FORMAT(DATE, FORMAT)`**
