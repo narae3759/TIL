@@ -100,7 +100,7 @@ $$
 계산 과정 자세히 보기
 </summary>
 <div style="text-align:center">    
-    <img src='../images/DL04.PNG' width="90%">
+    <img src='../images/DL04.PNG' width="70%">
 </div>
 </details>
 
@@ -108,7 +108,7 @@ $$
 
 ### **2) Backward Algorithm**
 <div style="text-align:center">
-    <img src="../images/DL05.PNG" width="90%">
+    <img src="../images/DL05.PNG" width="70%">
 </div>
 
 * $\beta_t(j)=\operatorname{P}(o_{t+1},o_{t+2},\cdots,o_T,q_t=s_j\mid \boldsymbol{\lambda})$<br>
@@ -171,7 +171,7 @@ $$
 계산 과정 자세히 보기
 </summary>
 <div style="text-align:center">    
-    <img src='../images/DL06.PNG' width="90%">
+    <img src='../images/DL06.PNG' width="70%">
 </div>
 </details>
 
