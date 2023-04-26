@@ -51,7 +51,12 @@
 * EX1. 통근수단이 '버스', '지하철', '자전거'인 행만 추출 $\rightarrow$ `IN ('버스', '지하철', '자전거)`
 
 ## **사이에 있는 값 찾기 :  `BETWEEN A AND B`**
-* 점수(SCORE)가 70점 <u>이상</u> 80점 <u>이하</u>인 행만 추출 $\rightarrow$ `SCORE BETWEEN 70 AND 80`
+* 점수(SCORE)가 70점 <b><u>이상</u></b> 80점 <b><u>이하</u></b>인 행만 추출 $\rightarrow$ `SCORE BETWEEN 70 AND 80`
+
+## **최대/최소값을 가진 행 찾기 : WHERE + 서브쿼리**
+* 최대/최소값을 가지는 ID에 대한 모든 내역을 추출하고 싶을 때 사용한다. 
+* EX1. 조회수가 가장 많은 글에 대한 댓글을 추출 $\rightarrow$
+ `WHERE VIEWS = (SELECT MAX(VIEWS) FROM TABLE1)`
 
 # **ORDER BY**
 * EX1. USER_ID를 기준 오름차순으로 정렬 $\rightarrow$ `ORDER BY USER_ID` / `ORDER BY USER_ID ASC`
@@ -98,3 +103,11 @@ COLUMN을 불러오는 데 날짜의 형식을 다르게 표현하고 싶을 때
 $\rightarrow$ `DATEDIFF(DATE2, DATE1)`
 * EX1. 대여일(START_DATE)과 반납일(END_DATE)를 통해 대여 기간을 계산하자.<br>
 $\rightarrow$ `DATEDIFF(DATE2, DATE1) + 1` (대여일도 대여 기간에 포함되기 때문)
+
+## **`CONCAT(C1, C2, ...) / CONCAT_WS(SEP, C1, C2, ...)`**
+* COLUMNS를 하나로 연결해준다. ',' 대신 '+'를 사용하기도 한다. 
+* `_WS`로 구분자를 사용하여 연결시킬 수 있다.
+* EX1. DEPARTMENT, NAME, TITLE을 연결하여 PRINT '개발부 홍길동 대리' COLUMN을 생성<br>
+$\rightarrow$ `CONCAT(DEPARTMEHT, NAME, TITLE) AS PRINT`
+* EX2. FOLDER_NAME, FILE_NAME, FILE_EXT를 '/'로 연결하여 상대경로 DIR COLUMN을 생성<br>
+$\rightarrow$ `CONCAT_WS('/','./',FOLDER_NAME, FILE_NAME, FILE_EXT) AS DIR`
