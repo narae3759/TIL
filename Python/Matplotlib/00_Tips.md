@@ -2,8 +2,14 @@
 ```python
 import matplotlib.pyplot as plt 
 ```
+# **`axis`**
+### `ax.axis('off')`
+모든 축을 그리고 싶지 않을 때에는 로 표현할 수 있다. 이미지를 나타낼 때 주로 사용한다. 
 
-# **1. `plt.subplots()`**
+### `set_title(title, pad, fontweight, size)`
+plot의 title을 설정할 때 가장 많이 사용하는 것이 **bold, fontsize**이다. 또한, title이 가끔 그림과 붙어 있어 사이의 space를 조정하고 싶을 때가 있는데 **pad**로 조정할 수 있다. 3종 세트로 기억하자.
+
+# **`plt.subplots()`**
 
 ```python
 fig, ax = plt.subplots(nrow, ncol, figsize, options...)
@@ -20,7 +26,7 @@ ax[i,j].plot()
 : top plot과 bottom plot의 height 비율을 2:1로 한다. 
 * plots의 축 공유 : `sharex=True, sharey=True`
 
-# **2. `dataframe.plot().bar() / dataframe.plot().barh()`**
+# **`dataframe.plot().bar() / dataframe.plot().barh()`**
 
 ## **1) options**
 
