@@ -40,6 +40,16 @@
 ## **중복되지 않는 COLUMN 추출 : `DISTINCT 'COLUMN'`**
 * EX1. 결제 수단(PAY)의 종류를 추출 $\rightarrow$  `DISTINCT PAY`
 
+# **HAVING**
+* `GROUP BY`를 통해 `SELECT`에서 FUNCTION으로 계산된 새로운 COLUMN에 대한 조건식이 필요할 때 사용한다. 
+* 반드시 `GROUP BY` 뒤에 와야 한다.
+* EX1. 평균 주문 횟수가 10건 이상인 고객만 추출
+    ```sql
+    SELECT ID, AVG(ORDER) AS ORDER_AVG FROM TABLE1
+    GROUP BY ID
+    HAVING AVG(ORDER) >= 10
+    ```
+
 # **WHERE**
 ## **문자의 포함 여부 확인 : `LIKE`**
 * EX1. 이메일 주소가 네이버인 행만 추출 $\rightarrow$ `LIKE "%@NAVER.COM"`
@@ -65,6 +75,8 @@
 $\rightarrow$ `ORDER BY NAME, USER_ID DESC`
 * EX4. NAME을 기준 내립차순으로 정렬 후 같으면 USER_ID를 기준 오름차순으로 정렬<br>
 $\rightarrow$ `ORDER BY NAME DESC, USER_ID`
+* COLUMN명 대신 COLUMN 번호를 사용해도 된다. <br>
+SELECT에서 별칭으로 만들어진 COLUMN에 대한 정렬이 필요할 때 주로 사용한다.
 
 # **FUNCTIONS**
 ## **`DATE_FORMAT(DATE, FORMAT)`**
