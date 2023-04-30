@@ -1,9 +1,10 @@
 > **Reference**<br>
 > * [머신러닝 교과서 with 파이썬, 사이킷런, 텐서플로 개정3판](https://github.com/gilbutITbook/080223)
+> * [TensorFlow 가이드](https://www.tensorflow.org/guide?hl=ko)
 ---
 
 # **TensorFlow?**
-* Google Brain 팀이 개발한 딥러닝 라이브러리 중 하나. 
+* 2015년 등장. Google Brain 팀이 개발한 딥러닝 라이브러리 중 하나. 
 * 머신러닝 작업 속도를 매우 빠르게 높여준다. 
 
 # **1. Tensor 생성**
@@ -108,6 +109,48 @@ print(oh_tensor)
 ##  [0. 0. 0. 1. 0.]], shape=(3, 5), dtype=float32)
 ```
 
+## **5) 희소행렬(Sparse Matrix) 생성**
+### **`tf.sparse.SparseTensor(indices, values, dense_shape)`**
+* 희소행렬을 효율적으로 저장할 수 있다.
+* `indices`는 0이 아닌 원소의 위치,<br> `values`는 위치에 해당하는 값, <br>`dense_shape`은 희소행렬의 크기를 의미한다.
+
+```python
+t_sparse= tf.sparse.SparseTensor(indices=[[0, 0], [1, 2], [3, 3]],
+                                 values=[1, 2, 3],
+                                 dense_shape=[4, 5])
+print(t_sparse)
+print(tf.sparse.to_dense(t_sparse).numpy())
+
+## Output
+## SparseTensor(indices=tf.Tensor(
+## [[0 0]
+##  [1 2]
+##  [3 3]], shape=(3, 2), dtype=int64), values=tf.Tensor([1 2 3], shape=(3,), dtype=int32), dense_shape=tf.Tensor([4 5], shape=(2,), dtype=int64))
+##
+## [[1 0 0 0 0]
+##  [0 0 2 0 0]
+##  [0 0 0 0 0]
+##  [0 0 0 3 0]]
+```
+
+## **6) 비정형 텐서(ragged tensor) 생성**
+* 축마다 원소의 개수가 다른 텐서를 비정형 텐서라고 한다. 
+* shape를 보면 길이가 정해져 있지 않은 축의 경우 `None`으로 표현된다.
+
+```python
+t_ragged = tf.ragged.constant([[1, 2],
+                               [3, 4, 5, 6],
+                               [7],
+                               [8, 9, 10]])
+
+print(t_ragged)
+print(t_ragged.shape)
+
+## Output
+## <tf.RaggedTensor [[1, 2], [3, 4, 5, 6], [7], [8, 9, 10]]>
+## (4, None)
+```
+
 # **2. Tensor 조작**
 ## **1) 데이터 타입 변경**
 ### **`tf.cast(tensor, dtype)`**
@@ -177,23 +220,34 @@ print('After'.ljust(8), t_arr_squeeze.shape)
 ```
 
 # **3. Tensor 연산**
-## **1) 원소 별 곱셈**
-### **`tf.multiply(tensor1, tensor2, ...)`**
+## **1) 원소 별 연산**
+### **`tf.add(), tf.subtract(), tf.multiply()`**
+* 브로드캐스팅이 가능하다.
+* 연산자로 바로 써도 가능하다.
 
 ```python 
 t_arr1 = tf.constant([[1,2,3],[4,5,6]])
 t_arr2 = tf.fill((2, 3), 3)
-t_multiply = tf.multiply(t_arr1, t_arr2)
-print(t_multiply)
+
+print(tf.add(t_arr1, t_arr2).numpy())           # t_arr1 + t_arr2
+print(tf.add(t_arr1, 3))                        # Broadcasting(위와 동일하여 output 생략)
+print(tf.subtract(t_arr1, t_arr2).numpy())      # t_arr1 - t_arr2
+print(tf.multiply(t_arr1, t_arr2).numpy())      # t_arr1 * t_arr2
+
 
 ## Output
-## tf.Tensor(
+## [[4 5 6]
+##  [7 8 9]]
+##
+## [[-2 -1  0]
+##  [ 1  2  3]]
+##
 ## [[ 3  6  9]
-##  [12 15 18]], shape=(2, 3), dtype=int32)
+##  [12 15 18]]
 ```
 
 ## **2) 차원 축소(축에 대한 통계)**
-### **`tf.math_reduce_mean/sum/std(tensor, axis)`**
+### **`tf.math_reduce_min/max/mean/sum/std/...(tensor, axis)`**
 
 ```python
 t_col = tf.math.reduce_sum(t_arr1, axis=0)      # 열 별 합 

@@ -19,6 +19,7 @@
 * TensorFlow
     * [TensorFlow 기초](AI/Tensorflow/01_Tensorflow_basic.md)
     * [TensorFlow 데이터셋](AI/Tensorflow/02_Tensorflow_dataset.md)
+    * [TensorFlow 변수](AI/Tensorflow/03_Tensorflow_variable.md)
 * Exercise
     * CelebA dataset([load data](
         AI/Exercise/CelebA/01_CelebA_Load_Data.ipynb))
