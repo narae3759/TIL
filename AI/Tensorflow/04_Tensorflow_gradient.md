@@ -9,8 +9,9 @@
 * 중첩된 함수를 계산하기 위해 연쇄 법칙(Chain rule)을 구현한 것<br>(후진 모드 자동 미분을 사용한다)
 > **Chain Rule(연쇄법칙)**<br>
 반복적으로 얻은 그레디언트를 누적하여 계산한다.
+
 $$
-        z = f(y),\quad y = g(w),\quad w = h(x)\\[10pt]
+        z = f(y),\quad y = g(w),\quad w = h(x)\\
         \begin{aligned}
             \dfrac{dz}{dx} 
             &= \dfrac{dz}{dy}\cdot\dfrac{dy}{dw}\cdot\dfrac{dw}{dx}\\
@@ -18,6 +19,7 @@ $$
             &= \left(\dfrac{dz}{dy}\cdot\dfrac{dy}{dw}\right)\cdot\dfrac{dw}{dx}\quad \text{후진 모드}\\
         \end{aligned} 
 $$
+
 * Options
     * `persistent=True/False`<br>
     Default는 하나의 그레디언트 계산을 위한 자원만 유지한다. 만약 여러 개의 그레디언트 계산이 필요하다면 `persistent=True`옵션을 추가해야 한다.
@@ -48,36 +50,10 @@ dydx = tape.gradient(y, x)                  # STEP5 미분
 print(dydx)     ## tf.Tensor(10.0, shape=(), dtype=float32)
 ```
 
-**:exclamation: `tape.watch(x)`의 생략**<br>
-trainable한 변수 한 개에 대한 미분을 계산할 때에는 자동으로 인식하기 때문에 쓰지 않아도 된다. ***하지만***, 두 개 이상의 미분 계산이 필요할 때에는 `persistent=True`와 함께 `tape.watch()`로 추적할 변수를 설정해주어야 한다.(EX 3, 4 참고)
-
-```python
-# trainable하지 않은 변수의 경우 자동으로 인식하지 않는다.
-x = tf.Variable(5, dtype=tf.float32, trainable=False)
-with tf.GradientTape() as tape:
-    y = x ** 2
-dydx = tape.gradient(y, x)
-
-print(dydx)     ## None
-```
-
-**:exclamation: `watch_accessed_variables=False`**<br>
-`tape.watch(x)`를 자동으로 인식하지 않게 한다. 
-
-```python
-x = tf.Variable(5, dtype=tf.float32)
-
-with tf.GradientTape(watch_accessed_variables=False) as tape:
-    y = x ** 2
-dydx = tape.gradient(y, x)
-
-print(dydx)     ## None
-```
-
 **EX 2.** $y=x^2$일 때 $x=5$에서의 $\dfrac{d^2y}{dx^2}$를 구하자.
 
 $$
-    \dfrac{dy}{dx} = 2x \quad\longrightarrow\quad 2 \times 3 = 6\\[10pt]
+    \dfrac{dy}{dx} = 2x \quad\longrightarrow\quad 2 \times 3 = 6\\
     \dfrac{d^2y}{dx^2} = 2
 $$
 
@@ -117,7 +93,7 @@ print(dydx2)    ## None
 
 $$
     \begin{aligned}
-        \dfrac{dy}{dx} = 2x &\quad\longrightarrow\quad 2 \times 5 = 10\\[10pt]
+        \dfrac{dy}{dx} = 2x &\quad\longrightarrow\quad 2 \times 5 = 10\\
         \dfrac{dz}{dw} = 3w^2 &\quad\longrightarrow\quad 3 \times 9 = 27
     \end{aligned}
 $$
@@ -142,9 +118,9 @@ print(dzdw)     ## tf.Tensor(27.0, shape=(), dtype=float32)
 
 $$
     \begin{aligned}
-        \dfrac{dz}{dy} = 2y = 2x^3 &\quad\longrightarrow\quad 2 \times 27 = 54\\[10pt]
+        \dfrac{dz}{dy} = 2y = 2x^3 &\quad\longrightarrow\quad 2 \times 27 = 54\\
         \dfrac{dy}{dx} = 3x^2 &\quad\longrightarrow\quad 3 \times 9 = 27
-    \end{aligned}\\[10pt]
+    \end{aligned}\\
     \dfrac{dz}{dx}=\dfrac{dz}{dy}\cdot\dfrac{dy}{dx}=54\times 27 = 1458
 $$
 
@@ -266,6 +242,86 @@ dydx = tape.gradient(y, x)
 print(dydx)     ## tf.Tensor(28.0, shape=(), dtype=float32)
 ```
 
+## **4) 주의할 점**
 
+**:exclamation: `tape.watch(x)`의 생략**<br>
+trainable한 변수 한 개에 대한 미분을 계산할 때에는 자동으로 인식하기 때문에 쓰지 않아도 된다. ***하지만***, 두 개 이상의 미분 계산이 필요할 때에는 `persistent=True`와 함께 `tape.watch()`로 추적할 변수를 설정해주어야 한다.(EX 3, 4 참고)
 
+```python
+# trainable하지 않은 변수의 경우 자동으로 인식하지 않는다.
+x = tf.Variable(5, dtype=tf.float32, trainable=False)
+with tf.GradientTape() as tape:
+    y = x ** 2
+dydx = tape.gradient(y, x)
 
+print(dydx)     ## None
+```
+
+**:exclamation: `watch_accessed_variables=False`**<br>
+`tape.watch(x)`를 자동으로 인식하지 않게 한다. 
+
+```python
+x = tf.Variable(5, dtype=tf.float32)
+
+with tf.GradientTape(watch_accessed_variables=False) as tape:
+    y = x ** 2
+dydx = tape.gradient(y, x)
+
+print(dydx)     ## None
+```
+
+**:exclamation: 미분할 대상은 반드시 변수여야 한다.**<br>
+변수 값 업데이트는 `assign()/assign_add()/assign_sub()`를 통해 이뤄져야 한다. 그렇지 않으면 variable은 tensor로 type이 바뀌게 된다.
+
+```python
+x1 = tf.Variable(2, dtype=tf.float32)
+x2 = x1 + 1
+
+with tf.GradientTape(persistent=True) as tape:
+    y = x1 ** 3 + x2 **3
+
+dydx1 = tape.gradient(y, x1)
+dydx2 = tape.gradient(y, x2)
+
+print(f'type={type(x1).__name__},\t x={x1.numpy()},\t  dydx={dydx1}')
+print(f'type={type(x2).__name__},\t x={x2.numpy()},\t  dydx={dydx2}')
+
+## Output
+## type=ResourceVariable,	 x=2.0,	  dydx=12.0
+## type=EagerTensor,	     x=3.0,	  dydx=None
+```
+
+**:exclamation: 변수의 dtype은 float여야 한다.**<br>
+dtype을 따로 입력하지 않으면 `int32`로 인식하게 되는데 이 경우 미분이 제대로 되지 않아 `None`을 반환한다. 반드시 `dtype=tf.float32`옵션을 추가하거나 `tf.Variable(2.0)`과 같이 실수임을 표현해야 한다.
+
+```python
+x = tf.Variable(2)
+
+with tf.GradientTape() as tape:
+    y = x ** 4 
+
+dydx = tape.gradient(y, x)
+
+print(f'type={type(x).__name__},\t x={x.numpy()},\t  dydx={dydx}')
+
+## Output
+## type=ResourceVariable,	 x=2,	  dydx=None
+```
+
+**:exclamation: 연결되지 않는 변수의 경우 출력을 0으로 바꿀 수 있다.**<br>
+함수에 포함되어 있지 않은 변수를 미분하려고 할 때 `None`을 반환하게 되는데, `unconnected_gradients=tf.UnconnectedGradients.ZERO` 옵션을 이용하여 이를 0으로 대체 출력할 수 있게 할 수 있다. 
+
+```python
+x = tf.Variable([2., 2.])
+y = tf.Variable(3.)
+
+with tf.GradientTape(persistent=True) as tape:
+  z = y**2
+
+print(tape.gradient(z, x))
+print(tape.gradient(z, x, unconnected_gradients=tf.UnconnectedGradients.ZERO))
+
+## Output
+## None
+## tf.Tensor([0. 0.], shape=(2,), dtype=float32)
+```
