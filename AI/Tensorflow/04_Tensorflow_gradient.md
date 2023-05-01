@@ -215,8 +215,12 @@ plt.show()
 **EX 7.** $\mathbf{y}=\begin{bmatrix}2x & x^3 & -x^2+5x\end{bmatrix}$일 때 $x=3$에서의 $\nabla\mathbf{y}$를 구한 후 각 요소의 합을 구하자.
 
 $$
-    \mathbf{y}=\begin{bmatrix}2x & x^3 & -x^2+5x\end{bmatrix}\\
-    \nabla\mathbf{y} = \dfrac{\partial \mathbf{y}}{\partial x}
+    \mathbf{y}=\begin{bmatrix}2x & x^3 & -x^2+5x\end{bmatrix}
+$$
+
+$$
+    \nabla\mathbf{y} 
+    = \dfrac{\partial \mathbf{y}}{\partial x}
     =\begin{bmatrix}2 & 3x^2 & -2x+5\end{bmatrix}
     \quad\longrightarrow\quad
     \begin{bmatrix}2 & 27 & -1\end{bmatrix}
