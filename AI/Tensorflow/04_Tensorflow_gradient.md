@@ -13,6 +13,7 @@
 $$
         z = f(y),\quad y = g(w),\quad w = h(x)
 $$
+
 $$        
         \begin{aligned}
             \dfrac{dz}{dx} 
@@ -57,6 +58,7 @@ print(dydx)     ## tf.Tensor(10.0, shape=(), dtype=float32)
 $$
     \dfrac{dy}{dx} = 2x \quad\longrightarrow\quad 2 \times 3 = 6
 $$
+
 $$
     \dfrac{d^2y}{dx^2} = 2
 $$
@@ -93,7 +95,7 @@ print(dydx)     ## tf.Tensor(6.0, shape=(), dtype=float32)
 print(dydx2)    ## None
 ```
 
-**EX 3. $y=x^2,\;z=w^3$일 때 $x=5, w=3$에서의 $\dfrac{dy}{dx},\dfrac{dz}{dw}$를 구하자.** 
+**EX 3.** $y=x^2,z=w^3$일 때 $x=5, w=3$에서의 $\dfrac{dy}{dx},\dfrac{dz}{dw}$를 구하자.
 
 $$
     \begin{aligned}
@@ -118,7 +120,7 @@ print(dydx)     ## tf.Tensor(10.0, shape=(), dtype=float32)
 print(dzdw)     ## tf.Tensor(27.0, shape=(), dtype=float32)
 ```
 
-**EX 4.**  $z=y^2,\;y=x^3$일 때 $x=3$에서의 $\dfrac{dz}{dx}$를 구하자.
+**EX 4.**  $z=y^2,y=x^3$일 때 $x=3$에서의 $\dfrac{dz}{dx}$를 구하자.
 
 $$
     \begin{aligned}
