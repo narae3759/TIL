@@ -11,7 +11,9 @@
 반복적으로 얻은 그레디언트를 누적하여 계산한다.
 
 $$
-        z = f(y),\quad y = g(w),\quad w = h(x)\\
+        z = f(y),\quad y = g(w),\quad w = h(x)
+$$
+$$        
         \begin{aligned}
             \dfrac{dz}{dx} 
             &= \dfrac{dz}{dy}\cdot\dfrac{dy}{dw}\cdot\dfrac{dw}{dx}\\
@@ -53,7 +55,9 @@ print(dydx)     ## tf.Tensor(10.0, shape=(), dtype=float32)
 **EX 2.** $y=x^2$일 때 $x=5$에서의 $\dfrac{d^2y}{dx^2}$를 구하자.
 
 $$
-    \dfrac{dy}{dx} = 2x \quad\longrightarrow\quad 2 \times 3 = 6\\
+    \dfrac{dy}{dx} = 2x \quad\longrightarrow\quad 2 \times 3 = 6
+$$
+$$
     \dfrac{d^2y}{dx^2} = 2
 $$
 
@@ -120,7 +124,9 @@ $$
     \begin{aligned}
         \dfrac{dz}{dy} = 2y = 2x^3 &\quad\longrightarrow\quad 2 \times 27 = 54\\
         \dfrac{dy}{dx} = 3x^2 &\quad\longrightarrow\quad 3 \times 9 = 27
-    \end{aligned}\\
+    \end{aligned}
+$$
+$$
     \dfrac{dz}{dx}=\dfrac{dz}{dy}\cdot\dfrac{dy}{dx}=54\times 27 = 1458
 $$
 
