@@ -119,4 +119,66 @@ soup.prettify()
     [마우스 오른쪽 클릭] - [Copy] - [Copy Selector]로 쉽게 얻을 수 있다.
     * 만약 값에 띄어쓰기(space)가 있는 경우에는 '.'으로 대체하여 쓰면 된다.
 
-## **1) Selenium**
+## **2) Selenium**
+### **크롬 열기**
+
+```python
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
+chrome_options = webdriver.ChromeOptions()
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), 
+                          options=chrome_options)
+```
+
+### **사이트 이동하기**
+
+```python
+driver.get(url)
+```
+
+:exclamation: 팝업창 또는 iframe 있는 경우, 페이지 전환이 필요하다. 
+
+```python
+# 페이지 전환
+privacy_iframe = 'sp_message_iframe_764226'
+driver.switch_to.frame(privacy_iframe)
+
+# 메인 페지이로 복구 
+driver.switch_to.default_content()
+```
+
+### **마우스/키보드 조작**
+
+* 입력: `input_box.send_keys('text')`
+* Backspace: `input_box.clear()` 
+* Enter: `input_box.send_keys(Keys.ENTER)`
+* Click: `button.click()`
+    * input 태그가 아닌 javascript의 onclick으로 연결된 경우<br>
+    `driver.execute_script('arguments[0].click();', players_url)`
+* Scroll 
+    * 맨 위: `input_box.send_keys(Keys.HOME)`
+    * 맨 아래: `input_box.send_keys(Keys.END)`
+    * **응용, 스크롤 계속 아래로 내리기**
+
+        ```python
+        def scr_down():
+            old_height = driver.execute_script('return window.scrollY')
+            while True:    
+                # 한 번 스크롤 다운 
+                driver.find_element(By.CSS_SELECTOR, 'body').send_keys(Keys.END)
+                
+                # 스크롤 길이 탐색
+                new_height = driver.execute_script('return window.scrollY')
+                print(new_height, end=' > ')
+                
+                # 스크롤 전/후의 길이가 차이나지 않으면 break
+                if new_height == old_height:
+                    break
+                old_height = new_height
+                
+            print('Scroll Down End!')
+        ```
+
+
