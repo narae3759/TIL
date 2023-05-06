@@ -27,7 +27,9 @@
 
 ## **Python**
 * Pandas
+    * [00. 관련 코드 정리](Python/Pandas/00_Tips.md)
     * [01. 데이터 타입](Python/Pandas/01_Data_Type.md)
+    * [02. 데이터 파악하기](Python/Pandas/02_Data_basic.md)
 * Matplotlib  
     * [00. 관련 코드 정리](Python/Matplotlib/00_Tips.md)
     * [01. 한글 폰트 적용](Python/Matplotlib/01_Plot_Font.md)
@@ -38,9 +40,10 @@
     * [00. 관련 코드 정리](Python/Web/00_Tips.md)
     * [01. 웹 스크래핑(Pandas)](Python/Web/01_Web_scraping.ipynb)
     * [02. 웹 크롤링(BeautifulSoup)](Python/Web/02_Web_crawling1.ipynb)
+    * [03. 웹 크롤링(Selenium)](Python/Web/03_Web_crawling2.ipynb)
     * [Exercise02-1. 지마켓 상품검색](Python/Web/Ex02_1_Gmarket.ipynb)
     * [Exercise02-2. 교보문고 도서검색](Python/Web/Ex02_2_Kyobo.ipynb)
-    <!-- * [03. 웹 크롤링(Selenium)](Python/Web/03_Web_crawling2.ipynb) -->
+    
     <!-- * [Exercise01. 지마켓](Python/Web/Ex01_Gmarket.ipynb) -->
     <!-- * [Exercise02. 세계 축구 선수 순위](Python/Web/Ex01_World_soccer.ipynb) -->
 
@@ -48,6 +51,7 @@
     <!-- * Plotly -->
 * Coding Test
     * [프로그래머스 Lv1. 달리기 경주](Python/CodingTest/%5B%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%20Lv1%5D%20%EB%8B%AC%EB%A6%AC%EA%B8%B0%20%EA%B2%BD%EC%A3%BC.md)
+    * [프로그래머스 Lv1. 시저 암호](Python/CodingTest/%5B%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%20Lv1%5D%20%EC%8B%9C%EC%A0%80%20%EC%95%94%ED%98%B8.md)
 
 ## **SQL**
 * [00. 관련 코드 정리](SQL/00_Tips.md)
