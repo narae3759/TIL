@@ -123,3 +123,8 @@ $\rightarrow$ `DATEDIFF(DATE2, DATE1) + 1` (대여일도 대여 기간에 포함
 $\rightarrow$ `CONCAT(DEPARTMEHT, NAME, TITLE) AS PRINT`
 * EX2. FOLDER_NAME, FILE_NAME, FILE_EXT를 '/'로 연결하여 상대경로 DIR COLUMN을 생성<br>
 $\rightarrow$ `CONCAT_WS('/','./',FOLDER_NAME, FILE_NAME, FILE_EXT) AS DIR`
+
+## **`LEFT(C, n) / MID(C, loc, n) / RIGHT(C, n)`**
+* 문자열에서 부분을 추출할 수 있다. 
+* EX1. 전화번호(`C`)를 '-'로 나누어 표현하자. 
+$\rightarrow$ `CONCAT_WS('-',LEFT(C,3),MID(C,4,4),RIGHT(C,4))` 
