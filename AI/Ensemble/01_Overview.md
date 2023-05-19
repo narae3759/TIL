@@ -7,8 +7,30 @@
 > ***NOTE***. 이 노트는 [고려대학교 산업경영공학부 DSBA 연구실 Youtube] 채널에서 강필성 교수님의 강의를 듣고 작성한 것이다.
 
 # **1. No Free Lunch Theorem**
+##  ***가장 우월한 알고리즘은 없다!*** 
+* [No Free Lunch Theorems for Optimization(1997)](https://ieeexplore.ieee.org/document/585893)에서 나온 이론.
+* 문제의 목적. 데이터의 형태 등 상황에 따라 우월한 알고리즘은 다르다.
+* 즉, ***여러 알고리즘의 특성을 파악***하고, 상황에 맞게 사용하는 것이 매우 중요하다. 
 
+## ***단일 모형보다는 여러 모형의 조합이 중요!***
+* [Do we Need Hundreds of Classifiers to Solve Real World Classification Problems?](https://dl.acm.org/doi/10.5555/2627435.2697065)<br>
+단일 모형보다 여러 모형의 조합이 성능이 더 좋다라는 것을 보이기 위해 대규모 실험을 통해 보여주었다. 
+* 실험 대상 : 179개의 Algorithm X 121개의 Datasets
+* 성능 지표  
+    1. 각 Dataset마다 Algorithm의 성능의 순위를 매김
+    2. 121개의 Datasets에 대한 성능 평균 순위를 계산
+    3. 단일 모형과 여러 모형의 조합의 평균 성능 순위를 비교
+* 결론
+    * 순위가 1인 Algorithm은 존재하지 않는다. <br>
+    $\rightarrow$ _어디서나 우월한 알고리즘은 없다_
+    * Random Forest와 SVM계열이 상대적으로 분류 성능이 높았다. <br>
+    $\rightarrow$ _단일 모형보다는 여러 모형의 조합이 더 우수함을 보인다._
+* 한계 
+    * 성능이 우수하다고 알려진 Boosting 계열의 알고리즘이 반영되지 않았다. 
+    * 179개라는 알고리즘의 수는 과장된 것. <br>
+    같은 알고리즘이더라도 다른 코드. 패키지를 사용하면 다른 알고리즘이라고 분류
 
+그래도 이 논문에서 중요한 것은 단일 모형보다는 여러 모형의 조합이 더 우수하다는 것은 실험으로 증명되었다는 사실이다.
 
 # **2. Bias-Variance Decomposition**
 
@@ -93,7 +115,7 @@ $F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0)$는 상수이므로
     **따라서 우리는 편향의 제곱과 분산을 모두 최소화할 수 있는 지점을 찾을 수 있어야 한다.**
 
 <div align='center'>
-<img src="../images/ensemble02.png" width="70%">
+<img src="../images/ensemble02.png" width="60%">
 </div>
 
 
@@ -101,8 +123,15 @@ $F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0)$는 상수이므로
 
 앞서 머신러닝에 대한 다양한 모델들에 대해 배웠었다. Ensemble의 Main Idea는 한 Dataset에 대해 다양한 모델들을 여러 번 사용해서 합치면 더 좋은 결과가 나오지 않을까?에서 시작한다. 
 
+* 집단지성, 대수의 법칙과 관련이 있다. 
+    * 집단지성(Collective Intelligence)? <br>
+    다수의 개체들이 서로 협력 혹은 경쟁을 통하여 얻게 되는 결과이자 집단적 능력을 말한다.(참고. 위키백과)
+    * 대수의 법칙(Law of Large Number)? <br>
+    모집단에서 무작위로 뽑은 표본의 평균이 전체 모집단의 평균과 가까울 가능성이 높다는 통계와 확률 분야의 기본 개념(참고. 위키백과)
+
+
 <div align='center'>
-<img src="../images/ensemble03.png" width="70%">
+<img src="../images/ensemble03.png" width="60%">
 </div>
 
 * Ensemble의 핵심 가치
@@ -127,4 +156,81 @@ $F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0)$는 상수이므로
     </table>
 
 # **4. Ensemble의 우수성**
+
+단일 모형일 때와 Ensemble 모형일 때의 성능을 수식으로 알아보자. 각 Model 또는 Learner의 모형은 다음과 같이 표현된다.
+
+$$
+    y_m(\mathbf{x}) = f(\mathbf{x}) + \epsilon_m(\mathbf{x}),\quad m=1,2,\cdots,M
+$$
+
+* **Single Model**
+    * $m$번째 Model의 오차제곱의 평균 : 
+    
+    $$
+        \mathrm{E}\left[\epsilon_m(\mathbf{x})^2\right] 
+        = \mathrm{E}\left[\left(y_m(\mathbf{x})-f(\mathbf{x})\right)^2\right]
+    $$
+    
+    * $M$개의 Model에 대한 오차제곱의 평균
+    
+    $$
+        \begin{aligned}
+        E_{Avg}
+        = \dfrac{1}{M}\sum_{m=1}^M \mathrm{E}\left[\epsilon_m(\mathbf{x})^2\right] 
+        \end{aligned}
+    $$
+
+* **Ensemble**
+    * 가정 1. 각 Learner의 오차 평균은 0이다. $\quad\mathrm{E}\left[\epsilon_m(\mathbf{x})\right]=0$
+    * 가정 2. Learner의 오차들은 서로 독립이다. $\quad\mathrm{E}[\epsilon_m(\mathbf{x})\epsilon_l(\mathbf{x})]=0\;(m\neq l)$
+    * Ensemble Estimator
+
+    $$
+        \dfrac{1}{M}\sum_{m=1}^M y_m(\mathbf{x})
+    $$
+
+    * 오차제곱의 평균
+
+    $$  
+        \begin{aligned}
+        E_{Emsemble} 
+        &= \mathrm{E}\left[\left(\dfrac{1}{M}\sum_{m=1}^M y_m(\mathbf{x})-f(\mathbf{x})\right)^2\right]\\
+        &= \mathrm{E}\left[\left(\dfrac{1}{M}\sum_{m=1}^M \left(y_m(\mathbf{x})-f(\mathbf{x})\right)\right)^2\right]\\
+        &= \mathrm{E}\left[\left(\dfrac{1}{M}\sum_{m=1}^M \epsilon_m(\mathbf{x})\right)^2\right]\\
+        &= \dfrac{1}{M}E_{Avg}
+        \end{aligned}
+    $$
+      
+* 만약 가정 1, 2가 성립하지 않는다면?
+
+    > **코시-슈바르츠 부등식(Cauchy-Shwarz inequality)**
+    > $$ (a^2+b^2)(x^2+y^2) \geq (ax+by)^2$$
+
+$$
+    \begin{aligned}
+        M\cdot \sum_{m=1}^M \epsilon_m(\mathbf{x})^2
+        &=(1^2+1^2+\cdots+1^2)(\epsilon_1(\mathbf{x})^2+\epsilon_2(\mathbf{x})^2+\cdots+\epsilon_M(\mathbf{x})^2)\\
+        &\geq \left(\epsilon_1(\mathbf{x})+\epsilon_2(\mathbf{x})+\cdots+\epsilon_M(\mathbf{x})\right)^2
+        =\left(\sum_{m=1}^M \epsilon_m(\mathbf{x})\right)^2
+    \end{aligned}
+$$
+
+정리하면
+
+$$
+    \begin{aligned}
+    M\cdot \sum_{m=1}^M \epsilon_m(\mathbf{x})^2
+    &\geq \left(\sum_{m=1}^M \epsilon_m(\mathbf{x})\right)^2\\
+    \dfrac{1}{M}\sum_{m=1}^M \epsilon_m(\mathbf{x})^2
+    &\geq \left(\dfrac{1}{M}\sum_{m=1}^M \epsilon_m(\mathbf{x})\right)^2 \\
+    \end{aligned}
+$$
+
+$$
+    \therefore \mathrm{E}_{Avg} \geq \mathrm{E}_{Ensemble}
+$$
+
+오차제곱의 평균은 작을수록 성능이 좋다. <br>
+따라서 가정이 성립하지 않더라도 단일 모형보다 여러 모형의 조합이 우수함을 증명할 수 있다. 
+
 
