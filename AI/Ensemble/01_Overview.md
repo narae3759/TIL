@@ -37,6 +37,10 @@ $$
 그리고 어떤 관측값 $\mathbf{x}_0$에 대한 MSE는 다음과 같이 예측값 $\hat{F}(\mathbf{x})$에 대한 편향의 제곱과 분산으로 분해할 수 있다. 
 
 $$
+    \because
+$$
+
+$$
     \begin{aligned}
     MSE(\mathbf{x})
     &= \operatorname{E}\left[(y-\hat{F}(\mathbf{x}))^2\mid \mathbf{x}=\mathbf{x}_0 \right]\\
