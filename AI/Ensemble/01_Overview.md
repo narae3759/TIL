@@ -36,23 +36,23 @@ $$
 그리고 어떤 관측값 $\mathbf{x}_0$에 대한 MSE는 다음과 같이 예측값 $\hat{F}(\mathbf{x})$에 대한 편향의 제곱과 분산으로 분해할 수 있다. 
 
 $$
-\begin{aligned}
-MSE(\mathbf{x})
-&= \operatorname{E}\left[(y-\hat{F}(\mathbf{x}))^2\mid \mathbf{x}=\mathbf{x}_0 \right]\\
-&= \operatorname{E}\left[\left(F^*(\mathbf{x}_0)+\epsilon - \hat{F}(\mathbf{x}_0)\right)^2\right]\\
-&= \operatorname{E}\left[\left(F^*(\mathbf{x}_0) - \hat{F}(\mathbf{x}_0)\right)^2\right] + \sigma^2
-\quad \left(\because \operatorname{E}(\epsilon)=0,\; \operatorname{E}(\epsilon^2)=\sigma^2 \right)\\
-&= \operatorname{E}\left[\left(F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0) + \bar{F}(\mathbf{x}_0) -\hat{F}(\mathbf{x}_0)\right)^2\right] + \sigma^2
-\quad \left(\because \operatorname{E}\left[F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0)\right]=0\right)\\
-&= \operatorname{E}\left[\Big(F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0)\Big)^2\right] + 
-\operatorname{E}\left[\left(\bar{F}(\mathbf{x}_0) -\hat{F}(\mathbf{x}_0)\right)^2\right] + \sigma^2\\
-&= \Big(F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0)\Big)^2 + 
-\operatorname{E}\left[\left(\bar{F}(\mathbf{x}_0) -\hat{F}(\mathbf{x}_0)\right)^2\right] + \sigma^2\\
-&= Bias^2\left(\hat{F}(\mathbf{x_0})\right) + Var\left(\hat{F}(\mathbf{x_0})\right) + \sigma^2
-\end{aligned}
+    \begin{aligned}
+    MSE(\mathbf{x})
+    &= \operatorname{E}\left[(y-\hat{F}(\mathbf{x}))^2\mid \mathbf{x}=\mathbf{x}_0 \right]\\
+    &= \operatorname{E}\left[\left(F^*(\mathbf{x}_0)+\epsilon - \hat{F}(\mathbf{x}_0)\right)^2\right]\\
+    &= \operatorname{E}\left[\left(F^*(\mathbf{x}_0) - \hat{F}(\mathbf{x}_0)\right)^2\right] + \sigma^2
+    \quad \left(\because \operatorname{E}(\epsilon)=0,\; \operatorname{E}(\epsilon^2)=\sigma^2 \right)\\
+    &= \operatorname{E}\left[\left(F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0) + \bar{F}(\mathbf{x}_0) -\hat{F}(\mathbf{x}_0)\right)^2\right] + \sigma^2
+    \quad \left(\because \operatorname{E}\left[F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0)\right]=0\right)\\
+    &= \operatorname{E}\left[\Big(F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0)\Big)^2\right] + 
+    \operatorname{E}\left[\left(\bar{F}(\mathbf{x}_0) -\hat{F}(\mathbf{x}_0)\right)^2\right] + \sigma^2\\
+    &= \Big(F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0)\Big)^2 + 
+    \operatorname{E}\left[\left(\bar{F}(\mathbf{x}_0) -\hat{F}(\mathbf{x}_0)\right)^2\right] + \sigma^2\\
+    &= Bias^2\left(\hat{F}(\mathbf{x_0})\right) + Var\left(\hat{F}(\mathbf{x_0})\right) + \sigma^2
+    \end{aligned}
 $$
 
-* $ Bias^2\left(\hat{F}(\mathbf{x_0})\right)$ : 예측값의 평균 $\bar{F}(\mathbf{x})$ 이 Target Function인 $F^*(\mathbf{x})$와 얼마나 떨어져 있는가?
+* $Bias^2\left(\hat{F}(\mathbf{x_0})\right)$ : 예측값의 평균 $\bar{F}(\mathbf{x})$ 이 Target Function인 $F^*(\mathbf{x})$와 얼마나 떨어져 있는가?
     * 즉, 예측값들의 평균이 정답을 잘 맞추는 편인가?
     * 편향의 제곱이 작다 $\rightarrow$ 정답을 맞출 가능성이 ***작다***.<br>
     편향의 제곱이 크다 $\rightarrow$ 정답을 맞출 가능성이 ***높다***.
