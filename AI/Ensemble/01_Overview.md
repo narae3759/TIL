@@ -40,10 +40,8 @@ $\mathrm{E}(\epsilon)=0, \mathrm{E}(\epsilon^2)=\sigma^2$이므로
 
 $$
     \begin{aligned}
-    MSE(\mathbf{x})
-    &= \mathrm{E}\left[(y-\hat{F}(\mathbf{x}))^2\mid \mathbf{x}=\mathbf{x}_0 \right] \\\\
-    &= \mathrm{E}\left[\left(F^*(\mathbf{x}_0)+\epsilon - \hat{F}(\mathbf{x}_0)\right)^2\right] \\\\       
-    &= \mathrm{E}\left[\left(F^*(\mathbf{x}_0) - \hat{F}(\mathbf{x}_0)\right)^2\right] + \sigma^2
+    MSE(\mathbf{x}_0)
+    &= \mathrm{E}\left[(y-\hat{F}(\mathbf{x}))^2\mid \mathbf{x}=\mathbf{x}_0 \right] \\ &= \mathrm{E}\left[\left(F^*(\mathbf{x}_0)+\epsilon - \hat{F}(\mathbf{x}_0)\right)^2\right] \\ &= \mathrm{E}\left[\left(F^*(\mathbf{x}_0) - \hat{F}(\mathbf{x}_0)\right)^2\right] + \sigma^2
     \end{aligned}
 $$
 
@@ -51,7 +49,7 @@ $\mathrm{E}\left[F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0)\right]=0$ 이므로
 
 $$
     \begin{aligned}
-    MSE(\mathbf{x})
+    MSE(\mathbf{x}_0)
     &= \mathrm{E}\left[\left(F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0) + \bar{F}(\mathbf{x}_0) -\hat{F}(\mathbf{x}_0)\right)^2\right] + \sigma^2 \\    
     &= \mathrm{E}\left[\Big(F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0)\Big)^2\right] + 
     \mathrm{E}\left[\left(\bar{F}(\mathbf{x}_0) -\hat{F}(\mathbf{x}_0)\right)^2\right] + \sigma^2
@@ -62,7 +60,7 @@ $F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0)$는 상수이므로
 
 $$
     \begin{aligned}
-    MSE(\mathbf{x})
+    MSE(\mathbf{x}_0)
     &= \Big(F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0)\Big)^2 + 
     \mathrm{E}\left[\left(\bar{F}(\mathbf{x}_0) -\hat{F}(\mathbf{x}_0)\right)^2\right] + \sigma^2 \\     
     &= Bias^2\left(\hat{F}(\mathbf{x_0})\right) + Var\left(\hat{F}(\mathbf{x_0})\right) + \sigma^2
