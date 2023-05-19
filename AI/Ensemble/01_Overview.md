@@ -15,6 +15,7 @@
 데이터는 Target Function 이외에 설명할 수 없는 오차 $\epsilon$가 포함되어 있다고 가정하는 모형을 'Additive error model'이라고 한다. 이때 $\epsilon$은 연구자가 컨트롤할 수 없는 자연적으로 발생하는 오차라고 해서 잡음(noise)라고도 부른다. 이를 수식으로 표현하면 다음과 같다.
 
 데이터 $y$는 다음과 같이 표현된다고 하자. 
+
 $$
     y = F^*(\mathbf{x}) + \epsilon,\quad \epsilon \overset{iid}{\sim}N(0, \sigma^2)
 $$
