@@ -164,14 +164,14 @@ $F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0)$는 상수이므로
 ```
 
 * **Single Model**
-    * $m$번째 Model의 오차제곱의 평균 : 
+1. $m$번째 Model의 오차제곱의 평균 : 
     
 ```math
     \mathrm{E}\left[\epsilon_m(\mathbf{x})^2\right] 
     = \mathrm{E}\left[\left(y_m(\mathbf{x})-f(\mathbf{x})\right)^2\right]
 ```
-    
-    * $M$개의 Model에 대한 오차제곱의 평균
+
+2. $M$개의 Model에 대한 오차제곱의 평균
     
 ```math
     \begin{aligned}
@@ -183,13 +183,12 @@ $F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0)$는 상수이므로
 * **Ensemble**
     * 가정 1. 각 Learner의 오차 평균은 0이다. $\quad\mathrm{E}\left[\epsilon_m(\mathbf{x})\right]=0$
     * 가정 2. Learner의 오차들은 서로 독립이다. $\quad\mathrm{E}[\epsilon_m(\mathbf{x})\epsilon_l(\mathbf{x})]=0\;(m\neq l)$
-    * Ensemble Estimator
+1. Ensemble Estimator
 
 ```math
     \dfrac{1}{M}\sum_{m=1}^M y_m(\mathbf{x})
-```
-
-    * 오차제곱의 평균
+``` 
+2. 오차제곱의 평균
 
 ```math
     \begin{aligned}
@@ -204,7 +203,7 @@ $F^*(\mathbf{x}_0) - \bar{F}(\mathbf{x}_0)$는 상수이므로
 * 만약 가정 1, 2가 성립하지 않는다면?
 
     > **코시-슈바르츠 부등식(Cauchy-Shwarz inequality)**
-    > $$ (a^2+b^2)(x^2+y^2) \geq (ax+by)^2$$
+    > $$(a^2+b^2)(x^2+y^2) \geq (ax+by)^2$$
 
 ```math
     \begin{aligned}
