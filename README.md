@@ -34,8 +34,9 @@
     * [02. 데이터 파악하기](Python/Pandas/02_Data_basic.md)
 * Matplotlib  
     * [00. 관련 코드 정리](Python/Matplotlib/00_Tips.md)
-    * [01. 한글 폰트 적용](Python/Matplotlib/01_Plot_Font.md)
-    * [02. 꾸미기 함수 모음](Python/Matplotlib/02_Functions.md)
+    * [01. 한글 폰트 적용](Python/Matplotlib/01_Font.md)
+    * [02. Plot 꾸미기](Python/Matplotlib/02_Customize.md)
+    * [03. Plot 종류](Python/Matplotlib/03_Plots.md)
 * Plotly
     * [01. 기초 그래프](Python/Plotly/01_.md)
 * WEB

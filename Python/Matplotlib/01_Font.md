@@ -32,3 +32,15 @@ import matplotlib.pyplot as plt
 plt.rc('font', family='NanumGothic')            # matplotllib
 mpl.rcParams['axes.unicode_minus'] = False      # minus 처리
 ```
+
+## **3) Library 설치**
+* 한글 폰트를 다운받지 않아도 적용시켜주는 라이브러리이다. 
+* 반드시 `import matplotlib.pyplot as plt` 뒤에 실행되어야 한다.
+
+```python
+!pip install koreanize-matplotlib
+```
+
+```python
+import koreanize_matplotlib
+```
