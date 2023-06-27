@@ -1,3 +1,10 @@
+> **Reference**<br>
+> * [쇼핑데이터를 활용한 머신러닝](https://www.boostcourse.org/ai224)
+> * [Pandas API Reference](https://pandas.pydata.org/docs/reference/)
+> * [Analytics Vidhya Blog, Skewness and Kurtosis: Quick Guide](https://www.analyticsvidhya.com/blog/2021/05/shape-of-data-skewness-and-kurtosis/)
+---
+
+
 # **데이터 파악하기**
 
 ## **<학습 목표>**
@@ -36,6 +43,9 @@ def check_NA(data):
     report_NA.index.name = 'variables'
     report_NA.columns = ['count', 'ratio']
 
+    if report_NA['count'].sum() == 0:
+        return 'There are no missing values in this data!'
+
     return report_NA
 ```
 
@@ -53,12 +63,40 @@ def check_NA(data):
         * EX2. include='number', `float`, `int` 타입인 변수만 요약한다.
         * EX3. exclude='datetime', `datetime` 타입을 제외한 나머지 변수를 요약한다.
     
-    &nbsp;
-    ```python
-    # 실험해보기
-    df = pd.DataFrame({'categorical': pd.Categorical(['d','e','f','e','f']),
-                    'numeric': [1, 2, 3, 4, 5],
-                    'object': ['a', 'b', 'c', 'd', 'e'],
-                    'datetime': np.arange('2023-03-06','2023-03-11', dtype='datetime64')
-                    })
-    ```
+    
+```python
+# 실험해보기
+df = pd.DataFrame({'categorical': pd.Categorical(['d','e','f','e','f']),
+                'numeric': [1, 2, 3, 4, 5],
+                'object': ['a', 'b', 'c', 'd', 'e'],
+                'datetime': np.arange('2023-03-06','2023-03-11', dtype='datetime64')
+                })
+```
+
+### **`dataframe.skew()/kurtosis()`**
+* 이상적인 데이터 분석은 변수가 ***정규성***을 띄는 것이다. 
+<br>skewness(치우침의 정도)와 kurtosis(꼬리의 두꺼운 정도)를 통해 데이터의 분포를 확인할 수 있다.
+* skewness(왜도) : 데이터의 비대칭을 확인할 수 있는 척도
+    * skewness > 0 : 데이터가 ***왼쪽***으로 치우쳐져 있다. 
+    * skewness = 0 : 데이터가 ***대칭***이다.
+    * skewness < 0 : 데이터가 ***오른쪽***으로 치우쳐져 있다.
+* kurtosis(척도) : 데이터의 분산을 파악할 수 있는 척도
+    * kurtosis > 3 : Mesokutric, 꼬리가 두껍다
+    * kurtosis = 3 : leptokurtic, 정규분포
+    * kurtosis < 3 : platykurtic, 꼬리가 얇다. 너무 크면 이상치가 있음을 의심해볼 수 있다. 
+
+```python
+# pandas의 describe()에 skewness/kurtosis를 추가하여 summary 함수를 만들었다.
+def summary(data):
+    describe = data.describe()
+    skewness = data.skew(axis=0, numeric_only=True)
+    kurtosis = data.kurtosis(axis=0, numeric_only=True)
+    add_describe = pd.concat([skewness, kurtosis], axis=1)
+    add_describe.columns = ['skewness', 'kurtosis']
+
+    result = pd.concat([describe, add_describe.transpose()], axis=0)
+
+    return result
+```
+
+
