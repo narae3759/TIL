@@ -2,9 +2,8 @@
 > * [Git Book, 
 https://git-scm.com/book/ko/v2/](
 https://git-scm.com/book/ko/v2/)
+> * [Git 튜토리얼, https://backlog.com/git-tutorial/kr/](https://backlog.com/git-tutorial/kr/)
 
-# **학습목표**
-내 폴더 `D:/yolo8`를 cmd에서 git으로 관리하기
 
 # 1. Git에 대한 간단설명
 하나의 프로젝트에 여러 버전을 효율적으로 관리할 수 있는 도구이다. 
